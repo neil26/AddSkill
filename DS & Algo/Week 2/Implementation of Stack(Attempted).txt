@@ -1,0 +1,48 @@
+class MyStack {
+      private:
+       class Data{
+           public:
+                   Data(int v,int m): val(v),min(m){};
+                   int val;
+                   int min;
+                  
+       };
+         stack<Data> s;
+public:
+    
+    /** Push element x onto stack. */
+    void push(int x) {
+          s.push(Data(x,s.empty()?x:min(x,s.top().min)));
+        
+    }
+    
+    /** Removes the element on top of the stack and returns that element. */
+    int pop() {
+         int x=s.top().val;
+         s.pop();
+        return x;
+    }
+    
+    /** Get the top element. */
+    int top() {
+         return s.top().val;
+    }
+    
+    /** Returns whether the stack is empty. */
+    bool empty() {
+        if(s.top().val<0){
+            return true;
+        }
+        else return false;
+        
+    }
+};
+
+/**
+ * Your MyStack object will be instantiated and called as such:
+ * MyStack* obj = new MyStack();
+ * obj->push(x);
+ * int param_2 = obj->pop();
+ * int param_3 = obj->top();
+ * bool param_4 = obj->empty();
+ */

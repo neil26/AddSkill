@@ -1,0 +1,36 @@
+//to Sort the vector according to the ratings.
+bool sortRatings(const vector<int>&a,const vector<int>&b){
+    //to check if the both ratings are same
+     if(a[1]==b[1])
+        return a[0]>b[0];//in this case we will sort them with id as mentioned in problem Statement.
+     else
+        return a[1]>b[1]; 
+}
+class Solution {
+public:
+    vector<int> filterRestaurants(vector<vector<int>>& restaurants, int veganFriendly, int maxPrice, int maxDistance) {
+        sort(restaurants.begin(),restaurants.end(),sortRatings); //sorting takes place according to ratings.
+        //result vector
+        std:: vector<int>res;
+        //first we will check whether the veganFriendly is 1 or not, if it is 1 then we will add only those restaurants detils which has veganFriendly=1;
+        if(veganFriendly==1){ 
+            for(int i=0;i<restaurants.size();i++){
+                //here we'll do a check whether the restaurnt is vegan and Price is less than our given maxPrice and distance is less than maxDistance
+                if(restaurants[i][2]==1 && restaurants[i][3]<=maxPrice && restaurants[i][4]<=maxDistance)
+                   res.push_back(restaurants[i][0]);//we will add such restautrants to our result vector.
+                else
+                    continue;
+            }
+        }
+        //if veganFriendly is = 0 then we will perform following.
+        else{
+            for(int i=0;i<restaurants.size();i++){
+                //here, we need to check only 2 things as veganFriendly option is  0, we will consider all Restaurants
+                //we will check whether the price is less than maxPrice, and distance is less Than maxDistance.
+                if(restaurants[i][3]<=maxPrice && restaurants[i][4]<=maxDistance)
+                    res.push_back(restaurants[i][0]);//we will add such restaurants to our result vector.
+            }
+        }   
+        return res;//returnung the our result.
+    }
+};

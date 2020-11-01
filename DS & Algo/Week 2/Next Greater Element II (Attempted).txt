@@ -1,0 +1,23 @@
+class Solution {
+public:
+    vector<int> nextGreaterElements(vector<int>& nums) {
+        stack<int>maxx;
+        for(int i=0;i<nums.size();i++){
+            maxx.push(nums[i]);
+        }
+        vector<int>ans;
+        for(int i=0;i<nums.size();i++){
+            int j=1;
+            while(nums[i]<maxx[j]){
+                ans.push_back(maxx[j]);
+            }
+            if(nums[i]>maxx.top())
+                maxx.push(nums[i]);
+            if(nums[i-1]<maxx.top())
+                ans.push_back(maxx.top());
+            else
+                ans.push_back(-1);
+        }
+        return ans;
+    }
+};

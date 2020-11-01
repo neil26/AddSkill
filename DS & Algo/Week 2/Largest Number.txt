@@ -1,0 +1,32 @@
+static bool check(string &s1,string &s2)
+{
+    return (s1+s2)>=(s2+s1);
+}
+
+class Solution {
+public:
+    string largestNumber(vector<int>& nums) {
+         vector<string> s(nums.size(),"");
+         int x=0;
+         for(int i=0;i<nums.size();i++)
+         {
+            if(nums[i]==0)
+              x++;
+         }
+         if(x==nums.size()) return "0";
+         for(int i=0;i<nums.size();i++)
+         {
+                s[i]=to_string(nums[i]);
+         }  
+         // we will sort our string array based on custum comparator
+         sort(s.begin(),s.end(),check);
+         // append the ans of sorted array in ans variable.
+         string ans="";
+         for(int i=0;i<s.size();i++)
+         {
+            ans+=(s[i]);
+         }
+
+        return ans; 
+    }
+};
