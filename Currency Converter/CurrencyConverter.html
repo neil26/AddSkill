@@ -1,0 +1,57 @@
+<html>
+<head>
+<style>
+    .vertical-center {
+  min-height: 30%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 30vh; /* These two lines are counted as one :-)       */
+  padding-left:10px;
+  display:block;
+  align-items: center;
+
+}
+    </style>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="bootstrap.css">
+    <title>Currency Coneverter</title>
+
+    
+</head>
+<body>
+    <div class="jumbotron">
+        <div class="container vertical-center">
+         <h2>Currency Calculator</h2>
+         <p class="lead">Convert the currency</p>
+         <form class="form-inline">
+           <div class="form-group mb-2">
+              <input type="number" class="form-control" id="amount"/>
+           </div>
+           <div class="form-group mx-sm-3 mb-2">
+              <select class="form-control" id="currency-1" required>
+                <option>INR</option>
+                <option>EUR</option>
+                <option>USD</option>
+              </select>
+            </div>
+            <div class="form-group mx-sm-3 mb-2">
+              <label><b>Convert to</b></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <select class="form-control" id="currency-2" required>
+                <option>INR</option>
+                <option>EUR</option>
+                <option>USD</option>
+              </select>
+            </div>  
+            <button class="btn calculate-btn btn-primary mb-2">Show me the result!</button>
+          </form>
+          <div class="result">
+            <p>
+              <span class="given-amount"></span> 
+              <span class="base-currency"></span>
+              <span class="final-result"></span> 
+              <span class="second-currency"></span>
+            </p>
+          </div>
+        </div> 
+      </div>
+      
+</body>
+</html>
