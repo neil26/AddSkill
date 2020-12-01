@@ -1,0 +1,29 @@
+class Solution {
+public:
+    vector<string> commonChars(vector<string>& A) {
+       vector<int> res(26, 0);
+        vector<int> temp(26,0);
+        for(int i=0;i<A[0].length();i++)
+            res[A[0][i]-'a']++;
+        for(int i=1;i<A.size();i++){
+            for(int j=0;j<A[i].length();j++){
+                temp[A[i][j]-'a']++;
+            }
+            for(int j=0;j<26;j++){
+                res[j] = min(temp[j],res[j]);
+                temp[j] = 0;
+            }
+        }
+        vector<string> ans;
+        for(int i=0;i<26;i++){
+            if(res[i]>0){
+                while(res[i]--){
+                    string temp = "";
+                    temp += i+'a';
+                    ans.push_back(temp);
+                }
+            }
+        }
+         return ans;
+    }
+};

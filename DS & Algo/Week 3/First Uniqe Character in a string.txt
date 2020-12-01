@@ -1,0 +1,23 @@
+class Solution {
+public:
+    const int CHAR=256;
+    int firstUniqChar(string s) {
+      int FI[CHAR];
+      fill(FI,FI+CHAR,-1);
+        for(int i=0;i<s.length();i++){
+            if(FI[s[i]]==-1){
+                FI[s[i]]=i;
+            }
+             else{
+                 FI[s[i]]=-2;
+             }     
+        }
+        int res=INT_MAX;
+        for(int i=0;i<CHAR;i++){
+            if(FI[i]>=0){
+                res=min(res,FI[i]);
+            }
+        }
+        return (res==INT_MAX)? -1: res;
+    }
+};
