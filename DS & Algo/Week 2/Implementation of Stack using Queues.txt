@@ -1,40 +1,35 @@
 class MyStack {
-      private:
-       class Data{
-           public:
-                   Data(int v,int m): val(v),min(m){};
-                   int val;
-                   int min;
-                  
-       };
-         stack<Data> s;
 public:
+    queue<int> q1;
+    queue<int> q2;
+    MyStack() {
+        
+    }
     
     /** Push element x onto stack. */
     void push(int x) {
-          s.push(Data(x,s.empty()?x:min(x,s.top().min)));
-        
+        q2.push(x);
+        while(!q1.empty()){
+            q2.push(q1.front());    q1.pop();
+        }
+        swap(q1, q2);
     }
     
     /** Removes the element on top of the stack and returns that element. */
     int pop() {
-         int x=s.top().val;
-         s.pop();
-        return x;
+        int result = top();
+        q1.pop();
+        return result;
     }
     
     /** Get the top element. */
     int top() {
-         return s.top().val;
+        return q1.front();
     }
     
     /** Returns whether the stack is empty. */
     bool empty() {
-        if(s.top().val<0){
-            return true;
-        }
-        else return false;
-        
+        return q1.empty();
     }
 };
 

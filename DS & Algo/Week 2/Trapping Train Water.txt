@@ -1,10 +1,15 @@
 class Solution {
 public:
     int trap(vector<int>& arr) {
-      	int res = 0;
+        int res = 0;
         int n=arr.size();
-    	vector<int> lMax(n);
-    	vector<int> rMax(n);
+
+	for(int i = 1; i < n - 1; i++)
+	{
+		int res = 0;
+
+    	int lMax[n];
+    	int rMax[n];
 
     	lMax[0] = arr[0];
     	for(int i = 1; i < n; i++)
@@ -20,4 +25,9 @@ public:
     	
     	return res;
 	}
+
+	return res;
+    
+    
+    }
 };
