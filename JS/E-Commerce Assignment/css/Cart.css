@@ -1,0 +1,78 @@
+/* Remove the navbar's default rounded borders and increase the bottom margin */
+.navbar {
+    border-radius: 0;
+  }
+
+  /* Remove the jumbotron's default bottom margin */
+  .jumbotron {
+    margin-bottom: 0;
+  }
+
+  /* Add a gray background color and some padding to the footer */
+  footer {
+    background-color: #f2f2f2;
+    padding: 25px;
+  }
+
+main {
+    grid-area: main;
+}
+.cart {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+.cart-list {
+    flex: 3 1 60rem;
+}
+
+.cart-action {
+    flex: 1 1 20rem;
+    background-color: #f0f0f0;
+    border-radius: 0.5rem;
+    padding: 1rem;
+}
+
+.cart-list-container li:first-child {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.cart-list-container li {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 0.1rem #c0c0c0 solid;
+}
+
+ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+
+ol, ul {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+button.primary {
+    background-color: #f0c040;
+}
+.fw {
+    width: 100%;
+}
+button {
+    cursor: pointer;
+}
+
+.cart-list-container {
+    padding: 1rem;
+    list-style-type: none;
+}

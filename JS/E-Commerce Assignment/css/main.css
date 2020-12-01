@@ -1,0 +1,20 @@
+.email-warning{
+    border-color: red;
+}
+
+.email-valid{
+    border-color: green;
+}
+
+.search-bar{
+    position: absolute;
+    top: 7px;
+}
+
+.box:hover{
+    background-color: lightblue;
+}
+
+.counter{
+    float:right;
+}
