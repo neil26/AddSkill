@@ -1,3 +1,4 @@
+
 let input = document.querySelector('input') 
   
 let textarea = document.querySelector('textarea') 
@@ -27,6 +28,7 @@ input.addEventListener('change', () => {
         // Returns and line breaks 
         const lines = file.split(/\r\n|\n/); 
         textarea.value = lines.join('\n'); 
+            spellcheck();
   
     }; 
   
@@ -34,3 +36,38 @@ input.addEventListener('change', () => {
   
     reader.readAsText(file); 
 }); 
+
+ async function spellcheck(){
+     let badwords=[];
+     let words=textarea.value.split(' ');
+     let content=document.getElementById('text-input');
+    var text = textarea.value;
+    let url = "https://api.textgears.com/spelling?key=Bkvnux2LCaXwSdR1&text=" + text + "!&language=en-GB";	
+    fetch(url).then(function(response){
+        let data=response.json();
+        return data;
+    }).then(function(data){
+        for(let i of data.response.errors){
+            console.log(i);
+            console.log(i.bad);
+            badwords.push(i.bad);
+        }
+        return badwords;
+    }).then(function(){
+        console.log(badwords);
+        console.log(words);
+
+
+    })
+    function highlight(badwords,content){
+        let temp=badwords;
+        content.forEach(Element => {
+            temp=temp.replace(new RegExp(badwords,'ig'),wrapKeywordWitHtml(Element ))
+        })
+        return temp;
+
+    }
+    function wrapKeywordWitHtml(keyword){
+        return '<span style="font-weight : Bold;color:Red;font-size:30px;">${keyword}</span>';
+    }
+}
